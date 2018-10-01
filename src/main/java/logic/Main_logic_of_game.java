@@ -24,6 +24,7 @@ public class Main_logic_of_game {
     public static final int status_Wins_O = 4;
 
 
+
     public static void startGame() {
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COLUMN; j++) {
