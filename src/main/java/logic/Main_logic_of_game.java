@@ -1,43 +1,29 @@
+package logic;
+
+
 import static input.Check_input.getIntNumber;
+import static print.Sout.soutFieldOfTheGame;
 
-public class TicTacGame {
-    // фіксовані змінні які відповідають за вміст комірки
-    public static final String EMPTY = "   "; // порожня клітинка для поля
-    public static final String CROSS = " X "; // хрестик
-    public static final String ZERO = " O "; // нулик
-
-    public static String activePlayer; // активний гравець
-
+public class Main_logic_of_game {
     // змінні для зберігання інфо про ігрове поле і " стан гри "
     public static final int ROW = 3;
     public static final int COLUMN = 3;
 
+
+    // фіксовані змінні які відповідають за вміст комірки
+    public static final String EMPTY = "   "; // порожня клітинка для поля
+    public static final String CROSS = " X "; // хрестик
+    public static final String ZERO = " O "; // нулик
     public static String[][] playField = new String[ROW][COLUMN]; // ігрове поле !!!
-    public static int gameStatus;
+
+    public static String activePlayer; // активний гравець
+
+    public static int gameStatus; // статус гравця
     public static final int status_Game_continues = 0;
     public static final int status_Draw = 1;
     public static final int status_Wins_X = 3;
     public static final int status_Wins_O = 4;
 
-
-    public static void main(String[] args) {
-
-        startGame(); // заповнить поле порожніми елементами, вкажить на активного нравця і виведить поле гри
-        do {
-            getInputOfThePlayer(); // отримуєм введення від гравця
-            analyzeFieldOfTheGame(); // аналізуємо поле гри, можливо гра вже закінчилась
-            soutFieldOfTheGame(); // виводимо поле гри
-            if (gameStatus == status_Wins_X) {
-                System.out.println("'X' переміг! Вітаю !!!");
-            } else if (gameStatus == status_Wins_O) {
-                System.out.println("'O' переміг! Вітаю !!!");
-            } else if (gameStatus == status_Draw) {
-                System.out.println(" Гра закінчилась внічию !");
-            }
-            activePlayer = (activePlayer == CROSS ? ZERO : CROSS); // якщо активний гравець є Х то змінити його на О і навпаки, і це все записуєм в змінну activePlayer
-        }
-        while (gameStatus == status_Game_continues); // поки гра триває ми будем гравців просити знову і знову вводити дані
-    }
 
     public static void startGame() {
         for (int i = 0; i < ROW; i++) {
@@ -57,7 +43,7 @@ public class TicTacGame {
             System.out.println("Гравець " + activePlayer + " Введіть рядок від (1 до 3) після того нажміть клавішу enter щоб продовжити:");
 
             int inRow = getIntNumber() - 1; //вводим рядок!  -1 я написав для тому що користувачам я сказав вводити від 1 до 3  і індекси починаются з 0
-            System.out.print("Введіть стовбчик від (1 до 3):");
+            System.out.println("Введіть стовбчик від (1 до 3):");
             int inColumn = getIntNumber() - 1; //вводим стовбчик!  -1 я написав для тому що користувачам я сказав вводити від 1 до 3  і індекси починаются з 0
 
             if (inRow >= 0 && inRow < ROW && inColumn >= 0 && inColumn < COLUMN && playField[inRow][inColumn] == EMPTY) {
@@ -141,26 +127,4 @@ public class TicTacGame {
 
 
     }  //після кожного введення гравця потрібно викликати цей метод він перевіряє чи є в нас переможець
-
-
-    public static void soutFieldOfTheGame() {
-        for (int i = 0; i < ROW; i++) {
-            for (int j = 0; j < COLUMN; j++) {
-                System.out.print(playField[i][j]);
-                if (j != COLUMN - 1) {
-                    System.out.print("|");
-
-                }
-            }
-
-            System.out.println();
-            if (i != ROW - 1) {
-                System.out.println("-----------");
-            }
-        }
-
-        System.out.println();
-    }  // виводить поле гри ОНОВЛЕНЕ
-
-
 }
