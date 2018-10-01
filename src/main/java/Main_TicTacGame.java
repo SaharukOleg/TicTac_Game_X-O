@@ -3,10 +3,7 @@ import static print.Sout.soutFieldOfTheGame;
 
 public class Main_TicTacGame {
 
-
-
     public static void main(String[] args) {
-
         startGame(); // заповнить поле порожніми елементами, вкажить на активного нравця і виведить поле гри
         do {
             getInputOfThePlayer(); // отримуєм введення від гравця
@@ -23,14 +20,4 @@ public class Main_TicTacGame {
         }
         while (gameStatus == status_Game_continues); // поки гра триває ми будем гравців просити знову і знову вводити дані
     }
-
-
-
-
-
-
-
-
-
-
 }
