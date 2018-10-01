@@ -9,7 +9,6 @@ public class Main_logic_of_game {
     public static final int ROW = 3;
     public static final int COLUMN = 3;
 
-
     // фіксовані змінні які відповідають за вміст комірки
     public static final String EMPTY = "   "; // порожня клітинка для поля
     public static final String CROSS = " X "; // хрестик
